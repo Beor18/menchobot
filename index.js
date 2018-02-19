@@ -23,3 +23,23 @@ app.post('/webhook', (req, res) => {
 		res.sendStatus(404);
 	}
 });
+
+app.get('/webhook', (req, res) => {
+	
+	//agregamos token para verificar
+	let VERIFY_TOKEN = "<PONER_TOKEN_GIL>"
+
+	let mode = req.query['hub.mode'];
+	let token = req.query['hub.verify_token'];
+	let challenge = req.query['hub.challenge'];
+
+
+	if (mode && token){
+		if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+			console.log('WEBHOOK_VERIFIED');
+			res.status(200).send(challenge);
+		} else {
+			res.sendStatus(403);
+		}
+	}
+});

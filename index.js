@@ -8,6 +8,8 @@ const
 	request = require('request'),
 	app = express().use(bodyParser.json()); // creamos express server
 
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
 app.listen(process.env.PORT || 1337, () => console.log('webhook funciona!'));
 
 app.post('/webhook', (req, res) => {

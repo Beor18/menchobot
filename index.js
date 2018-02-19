@@ -24,7 +24,7 @@ app.post('/webhook', (req, res) => {
 	}
 });
 
-app.get('/webhook/', (req, res) => {
+app.get('/webhook', (req, res) => {
 	
 	//agregamos token para verificar
 	let VERIFY_TOKEN = "<EAAEZBSgLMwiUBAKOCDL4o3HkDJy7jCz9GHZCvMEwrEOviKoHD3fBinTG0hFeZAtYeZA5lRZCZAOZC7NKh8jnaj6w4Qa9Ecui3K6MoDdZCMeoIzHvYidz9gJuGYTgZCLOkQIoFfOADMf1WKoQI8ZB25eiKDjTNXYGc3AnrkowLuAIKZBogZDZD>"

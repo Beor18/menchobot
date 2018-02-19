@@ -16,6 +16,18 @@ app.post('/webhook', (req, res) => {
 		body.entry.forEach(function(entry){
 			let webhook_event = entry.messaging[0];
 			console.log(webhook_event);
+
+			//Otenemos PSID
+			let sender_psid = webhook_event.sender.id;
+			console.log('Sender PSID: ' + sender_psid);
+
+			if (webhook_event.message){
+				handleMessage(sender_psid, webhook_event.message);
+
+			} else if (webhook_event.postback) {
+				handlePostback(sender_psid, webhook_event.postback);
+
+			}
 		});
 
 		res.status(200).send('EVENT_RECEIVED');
@@ -27,7 +39,7 @@ app.post('/webhook', (req, res) => {
 //Verificamos token
 app.get('/webhook', (req, res) => {
 
-  let VERIFY_TOKEN = "<EAAEZBSgLMwiUBAGUFfHzkUgcUV56ENElxkm3PaflY3dVjonFe3mu1e0K1LHCZACpZAjeyvoFHZCB5sQZAlnZAFBCqJjtZAKQZCHGeaZBy6ZChvaknKxv8FJzXt4ZAB4g9W3zCZAOveuR2RKb2RfNVknTEZCijmOA91XhGbKZAA4mL4q65F0AZDZD>"
+  let VERIFY_TOKEN = "<EAAEZBSgLMwiUBAKOCDL4o3HkDJy7jCz9GHZCvMEwrEOviKoHD3fBinTG0hFeZAtYeZA5lRZCZAOZC7NKh8jnaj6w4Qa9Ecui3K6MoDdZCMeoIzHvYidz9gJuGYTgZCLOkQIoFfOADMf1WKoQI8ZB25eiKDjTNXYGc3AnrkowLuAIKZBogZDZD>"
     
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
@@ -45,3 +57,17 @@ app.get('/webhook', (req, res) => {
     }
   }
 });
+
+function handleMessage(sender_psid, received_message) {
+
+}
+
+// Handles messaging_postbacks events
+function handlePostback(sender_psid, received_postback) {
+
+}
+
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  
+}

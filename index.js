@@ -7,11 +7,11 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 // configurar el puerto y el mensaje en caso de exito
-app.listen((process.env.PORT || 5000), () => console.log('El servidor webhook esta escchando!'));
+app.listen((process.env.PORT || 5000), () => console.log('El servidor webhook esta escuchando!'));
 
 // Ruta de la pagina index
 app.get("/", function (req, res) {
-    res.send("Se ha desplegado de manera exitosa el CMaquera ChatBot :D!!!");
+    res.send("Se ha desplegado de manera exitosa el MenchoBot!");
 });
 
 // Facebook Webhook
@@ -58,7 +58,7 @@ function process_event(event){
     if(message.text){
         // Crear un payload para un simple mensaje de texto
         var response = {
-            "text": 'Enviaste este mensaje: ' + message.text
+            "text": 'Hola, Puede comunicarse con nosotros a traves de info@lindemannargentina.com.ar o por whatsapp 11 3045 6542 '
         }
     }
     

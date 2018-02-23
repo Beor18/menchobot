@@ -12,6 +12,7 @@ app.listen((process.env.PORT || 5000), () => console.log('El servidor webhook es
 // Ruta de la pagina index
 app.get("/", function (req, res) {
     res.send("Se ha desplegado de manera exitosa el MenchoBot!");
+    console.log(process.uptime())
 });
 
 // Facebook Webhook
@@ -22,6 +23,7 @@ app.get("/webhook", function (req, res) {
     if (req.query["hub.verify_token"] === process.env.VERIFICATION_TOKEN) {
         // Mensaje de exito y envio del token requerido
         console.log("webhook verificado!");
+        console.log(process.uptime());
         res.status(200).send(req.query["hub.challenge"]);
     } else {
         // Mensaje de fallo
